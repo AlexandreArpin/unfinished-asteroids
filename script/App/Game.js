@@ -10,11 +10,6 @@ app.game = {
 
     this.addPlayer(app.center.x, app.center.y, 0);
 	
-	this.entities.add(ENGINE.Coin, {
-      x: 50,
-      y: 60
-    });
-	
     this.spawnAsteroid();
     this.spawnAsteroid();
     this.spawnAsteroid();

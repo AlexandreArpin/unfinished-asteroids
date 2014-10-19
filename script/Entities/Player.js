@@ -82,6 +82,10 @@ ENGINE.Player.prototype = {
   addScore: function(score) {
 	this.score += score;
   },
+  
+  addHealth: function(health) {
+	this.hp = Math.min(this.hp + health, this.maxHp);
+  },
 
   hit: function(data) {
 

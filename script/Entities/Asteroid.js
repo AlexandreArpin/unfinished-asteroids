@@ -31,9 +31,14 @@ ENGINE.Asteroid.prototype = {
     this.hp -= data.damage;
 	
 	app.playSound("asteroid-hit");
-
+		
     if (this.hp <= 0) {
 	  app.playSound("asteroid-crush");
+	  
+	  if(Math.random() > 0.5){
+		this.spawnMedikit();
+	}
+
 	  
 	  if(app.game.players[data.player]){
 		app.game.players[data.player].addScore(1);
@@ -70,6 +75,15 @@ ENGINE.Asteroid.prototype = {
 	this.collection.add(ENGINE.Coin, {
       x: this.x,
       y: this.y
+    });
+  },
+  
+  spawnMedikit: function(){
+  
+	this.collection.add(ENGINE.Powerup, {
+      x: this.x,
+      y: this.y,
+	  type: 3
     });
   },
 
