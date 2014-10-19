@@ -35,10 +35,17 @@ ENGINE.Asteroid.prototype = {
     if (this.hp <= 0) {
 	  app.playSound("asteroid-crush");
 	  
-	  app.game.players[data.player].addScore(1);
+	  if(app.game.players[data.player]){
+		app.game.players[data.player].addScore(1);
+	  }
 	  
-      if (this.splits) this.split();
-
+      if (this.splits) {
+		this.split();
+	  }
+	  else{
+		this.spawnCoin();
+	  }
+	  
       this.collection.remove(this);
     }
 	
@@ -56,6 +63,14 @@ ENGINE.Asteroid.prototype = {
       });
     }
 
+  },
+  
+  spawnCoin: function(){
+  
+	this.collection.add(ENGINE.Coin, {
+      x: this.x,
+      y: this.y
+    });
   },
 
   step: function(delta) {
