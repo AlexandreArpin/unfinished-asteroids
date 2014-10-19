@@ -28,15 +28,17 @@ ENGINE.Asteroid.prototype = {
   collidable: true,
 
   hit: function(data) {
-
     this.hp -= data.damage;
+	
+	app.playSound("asteroid-hit");
 
     if (this.hp <= 0) {
-
+	  app.playSound("asteroid-crush");
       if (this.splits) this.split();
 
       this.collection.remove(this);
     }
+	
 
   },
 
