@@ -10,6 +10,8 @@ var app = playground({
   create: function() {
 
     this.loadImages("spritesheet");
+	this.loadImages("coins");
+	
 	this.loadSounds("asteroid-crush");
 	this.loadSounds("asteroid-hit");
 	this.loadSounds("coin");
@@ -31,7 +33,6 @@ var app = playground({
   render: function(delta) {
 
     this.layer.clear("#008");
-    this.layer.fillStyle("#fff").font("64px Arial").fillText("Hello World!", 32, 64);
 
   },
 

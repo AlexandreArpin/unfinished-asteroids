@@ -4,6 +4,10 @@ ENGINE.Coin = function(args) {
     color: "#ff0" /* default color if none is provided */
   }, args);
 
+  this.width = 10;
+  this.height = 10;
+  this.delta = 0;
+  this.animationTick = 0;
 };
 
 ENGINE.Coin.prototype = {
@@ -29,9 +33,20 @@ ENGINE.Coin.prototype = {
   },
 
   render: function(delta) {
+	app.layer.save();
 
-    app.layer.fillStyle("#ff0").fillCircle(this.x, this.y, this.radius);
+    app.layer.translate(this.x, this.y);
+	var sprite = [this.animationTick * this.width, 0, this.width, this.height];
+    app.layer.drawRegion(app.images.coins, sprite, -this.width / 2, -this.height / 2);
 
+    app.layer.restore();
+	this.delta += delta
+	
+	//Animation step every 0.05 seconds
+	if(this.delta > 0.05){
+		this.animationTick = (this.animationTick + 1) % 7;
+		this.delta = 0;
+	}
   }
 
 };
