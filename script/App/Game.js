@@ -9,7 +9,7 @@ app.game = {
     this.players = [];
 
     this.addPlayer(app.center.x, app.center.y, 0);
-
+	
     this.spawnAsteroid();
     this.spawnAsteroid();
     this.spawnAsteroid();
@@ -39,7 +39,8 @@ app.game = {
   addPlayer: function(x, y, team) {
 
     var player = this.entities.add(ENGINE.Player, {
-      team: team,
+      player: this.players.length,
+	  team: team,
       x: x,
       y: y
     });

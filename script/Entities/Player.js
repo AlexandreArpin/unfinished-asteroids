@@ -17,6 +17,9 @@ ENGINE.Player = function(args) {
     forceDirection: 0,
     forceDamping: 0, // per second
 
+	/* Score */
+	score: 0,
+	
     /* shooting */
 
     cooldown: 0,
@@ -75,6 +78,10 @@ ENGINE.Player.prototype = {
     this.force = value;
     this.forceDamping = value;
   },
+  
+  addScore: function(score) {
+	this.score += score;
+  },
 
   hit: function(data) {
 
@@ -94,6 +101,7 @@ ENGINE.Player.prototype = {
       x: this.x,
       y: this.y,
       direction: this.direction,
+	  player: this.player,
       team: this.team,
       damage: 1
     });
